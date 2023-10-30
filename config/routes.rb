@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :profiles
   resources :comments
   resources :posts
   devise_for :users
@@ -16,4 +17,6 @@ Rails.application.routes.draw do
   #     resources :comments
   #   end
   # end
+  resource :profile, only: [:show, :edit, :update]
+
 end
