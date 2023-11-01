@@ -27,18 +27,15 @@
             </a>
           <% end %>
         </div>
+        <%= current_user.email%>
         <ul class="navbar-nav">
-        <!-- Other navigation links -->
       
-        <!-- Check if the user is signed in -->
         <% if user_signed_in? %>
-          <% if current_user.profile.present? %>
-            <!-- User is signed in and has a profile -->
+          <% if current_user.present? && current_user.profile.present? %>
             <li class="nav-item">
               <%= link_to "Profile", profiles_url, class: "nav-link" %>
             </li>
           <% else %>
-            <!-- User is signed in but doesn't have a profile -->
             <li class="nav-item">
               <%= link_to "Create Profile", new_profile_url, class: "nav-link" %>
             </li>

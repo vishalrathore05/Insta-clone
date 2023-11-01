@@ -1,22 +1,25 @@
-<div id="<%= dom_id profile %>">
-  <p>
-    <strong>Name:</strong>
-    <%= profile.name %>
-  </p>
 
-  <p>
-    <strong>Bio:</strong>
-    <%= profile.bio %>
-  </p>
+<% if current_user.present? && current_user.profile.present? %>
+  <div id="<%= dom_id profile %>">
+    <p>
+      <strong>Name:</strong>
+      <%= profile.name %>
+    </p>
 
-  <p>
-    <strong>Avatar:</strong>
-    <%= profile.avatar %>
-  </p>
+    <p>
+      <strong>Bio:</strong>
+      <%= profile.bio %>
+    </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= profile.user_id %>
-  </p>
+    <p>
+      <strong>Avatar:</strong>
+      <%= profile.avatar %>
+    </p>
 
-</div>
+    <p>
+      <strong>User:</strong>
+      <%= profile.user_id %>
+    </p>
+
+  </div>
+<% end %>

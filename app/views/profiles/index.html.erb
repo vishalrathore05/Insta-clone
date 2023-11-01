@@ -1,14 +1,91 @@
-<p style="color: green"><%= notice %></p>
+<style>
+    .btn {
+        border-radius: 1px;
+    }
 
-<h1>Profiles</h1>
+    .packages {
+        margin-top: 5rem;
+    }
 
-<div id="profiles">
-  <% @profiles.each do |profile| %>
-    <%= render profile %>
-    <p>
-      <%= link_to "Show this profile", profile %>
-    </p>
-  <% end %>
-</div>
+    #avatar-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-<%= link_to "New profile", new_profile_path %>
+    
+</style>
+<section>
+    <div class="container py-5 mt-5 mx-2">
+        <div class="row container-fluid m-0">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <div id="avatar-container">
+                            <img width="200px" src="" alt="avatar-image">
+                        </div>
+                        <h5 class="my-3"><%= !@user.email.split('@').first.nil? ? @user.email.split('@').first.gsub(/[^A-Za-z]/, '').capitalize : "Un-named user" %></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">
+                                    <%= @user.email.split('@').first.gsub(/[^A-Za-z]/, '').capitalize %>
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">
+                                    <%= @user.email %>
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Created At</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">
+                                    <%= @user.created_at.strftime("%d %B %Y") %>
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Last Updated At</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">
+                                    <%= @user.updated_at.strftime("%d %B %Y") %>
+                                </p>
+                            </div>
+                        </div>
+                        <hr> 
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Edit User</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <%= link_to "Edit your details" , "/users/edit" , method: :index, class: "btn btn-primary mb-0" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
