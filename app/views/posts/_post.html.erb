@@ -1,23 +1,19 @@
-<div id="<%= dom_id post %>">
-  
-
-<% if post.present? && post.image.present? %>
-<%= image_tag url_for(post.image), class: "card-img-top", height: "150px;" %>
-<% end %>
-<p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= post.description %>
-  </p>
-
-  <p>
-  <strong>Created by:</strong>
-
-  <td class="main-tbl-td"><%= post&.user&.email %></td>
-  </p>
- 
+<div class="container mx-auto text-center "style=" padding-top:10px; padding-left: 50%;">
+  <div id="<%= dom_id post %>">
+    <% if post.present? && post.image.present? %>
+      <%= image_tag url_for(post.image), class: "card-img-top", height: "150px;" %>
+    <% end %>
+    <p>
+      <strong>Title:</strong>
+      <%= post.title %>
+    </p>
+    <p>
+      <strong>Description:</strong>
+      <%= post.description %>
+    </p>
+    <p>
+      <strong>Created by:</strong>
+      <td class="main-tbl-td"><%= post&.user&.email %></td>
+    </p>
+  </div>
 </div>
