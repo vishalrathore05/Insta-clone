@@ -6,273 +6,51 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+
    </head>
-   <style>
-   .btn {
-       border-radius: 1px;
-   }
 
-   
-   #avatar-container {
-       display: flex;
-       justify-content: start;
-       align-items: start;
-       padding-top: 50px;
-   }
-
-   .details {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         border: black1px;
-       }
-
-       @import url(https://fonts.googleapis.com/css?family=Dancing+Script);
-
-       * {
-           margin: 0;
-       }
-       
-       body {
-           background-color: #e8f5ff;
-           font-family: Arial;
-           overflow: hidden;
-       }
-       
-       /* NavbarTop */
-       .navbar-top {
-           background-color: #fff;
-           color: #333;
-           box-shadow: 0px 4px 8px 0px grey;
-           height: 70px;
-       }
-       
-       .title {
-           font-family: 'Dancing Script', cursive;
-           padding-top: 15px;
-           position: absolute;
-           left: 45%;
-       }
-       
-       .navbar-top ul {
-           float: right;
-           list-style-type: none;
-           margin: 0;
-           overflow: hidden;
-           padding: 18px 50px 0 40px;
-       }
-       
-       .navbar-top ul li {
-           float: left;
-       }
-       
-       .navbar-top ul li a {
-           color: #333;
-           padding: 14px 16px;
-           text-align: center;
-           text-decoration: none;
-       }
-       
-       .icon-count {
-           background-color: #ff0000;
-           color: #fff;
-           float: right;
-           font-size: 11px;
-           left: -25px;
-           padding: 2px;
-           position: relative;
-       }
-       
-       /* End */
-       
-       /* Sidenav */
-       .sidenav {
-           background-color: #fff;
-           color: #333;
-           border-bottom-right-radius: 25px;
-           height: 86%;
-           left: 0;
-           overflow-x: hidden;
-           padding-top: 20px;
-           position: absolute;
-           top: 70px;
-           width: 250px;
-       }
-       
-       .profile {
-           margin-bottom: 20px;
-           margin-top: -12px;
-           text-align: center;
-       }
-       
-       .profile img {
-           border-radius: 50%;
-           box-shadow: 0px 0px 5px 1px grey;
-       }
-       
-       .name {
-           font-size: 20px;
-           font-weight: bold;
-           padding-top: 20px;
-       }
-       
-       .job {
-           font-size: 16px;
-           font-weight: bold;
-           padding-top: 10px;
-       }
-       
-       .url, hr {
-           text-align: center;
-       }
-       
-       .url hr {
-           margin-left: 20%;
-           width: 60%;
-       }
-       
-       .url a {
-           color: #818181;
-           display: block;
-           font-size: 20px;
-           margin: 10px 0;
-           padding: 6px 8px;
-           text-decoration: none;
-       }
-       
-       .url a:hover, .url .active {
-           background-color: #e8f5ff;
-           border-radius: 28px;
-           color: #000;
-           margin-left: 14%;
-           width: 65%;
-       }
-       
-       /* End */
-       
-       /* Main */
-       .main {
-           margin-top: 2%;
-           margin-left: 29%;
-           font-size: 28px;
-           padding: 0 10px;
-           width: 58%;
-       }
-       
-       .main h2 {
-           color: #333;
-           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-           font-size: 24px;
-           margin-bottom: 10px;
-       }
-       
-       .main .card {
-           background-color: #fff;
-           border-radius: 18px;
-           box-shadow: 1px 1px 8px 0 grey;
-           height: auto;
-           margin-bottom: 20px;
-           padding: 20px 0 20px 50px;
-       }
-       
-       .main .card table {
-           border: none;
-           font-size: 16px;
-           height: 270px;
-           width: 80%;
-       }
-       
-       .edit {
-           position: absolute;
-           color: #e7e7e8;
-           right: 14%;
-       }
-       
-       .social-media {
-           text-align: center;
-           width: 90%;
-       }
-       
-       .social-media span {
-           margin: 0 10px;
-       }
-       
-       .fa-facebook:hover {
-           color: #4267b3 !important;
-       }
-       
-       .fa-twitter:hover {
-           color: #1da1f2 !important;
-       }
-       
-       .fa-instagram:hover {
-           color: #ce2b94 !important;
-       }
-       
-       .fa-invision:hover {
-           color: #f83263 !important;
-       }
-       
-       .fa-github:hover {
-           color: #161414 !important;
-       }
-       
-       .fa-whatsapp:hover {
-           color: #25d366 !important;
-       }
-       
-       .fa-snapchat:hover {
-           color: #fffb01 !important;
-       }
-       
-   
-</style> 
-  <body> 
-    <div class="sidenav">
-      <div class="profile">
-        <a href="/">  <img src="https://imdezcode.files.wordpress.com/2020/02/imdezcode-logo.png" alt="" width="100" height="100"></a>
-
-          <div class="name">
-              ImDezCode
-          </div>
-          <div class="job">
-              Web Developer
-          </div>
-      </div>
-
-    <div class="sidenav-url">
-        <div class="url">
-            <a href="#profile" class="active">Profile</a>
-            <hr align="center">
-        </div>
-        <div class="url">
-            <a href="#settings">Settings</a>
-            <hr align="center">
-        </div>
-        <div class="url">
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: white; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+      <div class="container-fluid">
+        <a href="/"  >
+          <img src="/assets/SSLogo.png" style="height: 55px; width: 100px;" alt="not load" class="navbar-brand"></img>
+        </a>
+        <button class="navbar-toggler bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
           <% if user_signed_in? %>
+            <a class="nav-link text-dark p-3" href="/analytics">Analytics</a>
+
             <%= button_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, method: :delete, style: "background: none; border: none;", class: "nav-link text-dark p-3" %>
           <% else %>
             <a class="nav-link text-dark" aria-current="page" href="/users/sign_in">Sign in
             </a>
           <% end %>
         </div>
-
-        <div class="url">
+        <ul class="navbar-nav">
+        <!-- Other navigation links -->
+      
+        <!-- Check if the user is signed in -->
         <% if user_signed_in? %>
-          <% if current_user.present? && current_user.profile.present? %>
+          <% if current_user.profile.present? %>
+            <!-- User is signed in and has a profile -->
             <li class="nav-item">
               <%= link_to "Profile", profiles_url, class: "nav-link" %>
             </li>
           <% else %>
+            <!-- User is signed in but doesn't have a profile -->
             <li class="nav-item">
               <%= link_to "Create Profile", new_profile_url, class: "nav-link" %>
             </li>
           <% end %>
         <% end %>
-        </div>
-    </div>
-  </div>
+      </ul>
+      
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

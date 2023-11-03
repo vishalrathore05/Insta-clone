@@ -1,13 +1,29 @@
-<div style="padding-top:10px; padding-left: 0%;">
-  <p style="color: green"><%= notice %></p>
-  <div id="posts">
+<div class="container mx-auto" style="padding-top: 10px;">
+  <div class="row">
     <% @posts.each do |post| %>
-      <%= render post %>
-      <p>
-        <!--- <%= link_to "Show this post", post %>--->
-      </p>
+      <div class="col-md-3">
+        <div class="card">
+          <div id="<%= dom_id post %>">
+            <% if post.present? && post.image.present? %>
+              <%= image_tag url_for(post.image), class: "card-img-top", style: "height: 150px;" %>
+            <% end %>
+            <div class="card-body">
+              <p>
+                <strong>Created by:</strong>
+                <span class="main-tbl-td"><%= post&.user&.email %></span>
+              </p>
+              <h5 class="card-title">
+                <strong>Title:</strong>
+                <%= post.title %>
+              </h5>
+              <p class="card-text">
+                <strong>Description:</strong>
+                <%= post.description %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-
-  <!----<%= link_to "New post", new_post_path %>--->
 </div>
