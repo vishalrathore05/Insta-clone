@@ -1,42 +1,48 @@
- 
-     <div class="main">
-        <h2>IDENTITY</h2>
-        <div class="card">
-            <div class="card-body">
-                <i class="fa fa-pen fa-xs edit"></i>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Name</td>
-                            <td>:</td>
-                            <td> <%= @user.email.split('@').first.gsub(/[^A-Za-z]/, '').capitalize %>                            </td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>:</td>
-                            <td><%= @user.email%></td>
-                        </tr>
-                        <tr>
-                            <td>Bio</td>
-                            <td>:</td>
-                            <td>Bali, Indonesia</td>
-                        </tr>
-                        <tr>
-                            <td>Hobbies</td>
-                            <td>:</td>
-                            <td>Diving, Reading Book</td>
-                        </tr>
-                        <tr>
-                            <td>Job</td>
-                            <td>:</td>
-                            <td>Web Developer</td>
-                        </tr>
-                        <tr>
-                            <td>Skill</td>
-                            <td>:</td>
-                            <td>PHP, HTML, CSS, Java</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div> 
+<div class="main text-center " style="justify-container: center; padding-top: 10%">
+  <div class="card shadow">
+    <h2>Profile</h2>
+    <div class="card-body">
+      <i class="fa fa-pen fa-xs edit"></i>
+      <table>
+        <tbody>
+          <div class="col-md-6">
+            <% if @profiles.present? && @profiles.image.attached? %>
+              <%= image_tag url_for(@profiles.image), class: "dot card-img-top", style: "height: 150px; width: 150px; border-width: 50%; border-radius: 50%;" %>
+            <% end %>
+          </div>
+          <div class="col-md-6 text-center">
+            <tr>
+              <td>
+                <h4>
+                  <%= @profiles.name %>
+                </h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>
+                  <%= @profiles.bio %>
+                </h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Bali, Indonesia</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Diving, Reading Book</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>PHP, HTML, CSS, Java</h5>
+              </td>
+            </tr>
+          </div>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

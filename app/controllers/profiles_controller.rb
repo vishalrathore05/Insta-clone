@@ -6,7 +6,9 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
    def index
-      @user = current_user
+    if current_user.present?
+      @profiles = current_user.profile
+    end
   end
 
   # GET /profiles/1 or /profiles/1.json
@@ -83,6 +85,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:name, :bio, :avatar, :user_id)
+      params.require(:profile).permit(:name, :bio, :avatar,:image, :user_id)
     end
 end
