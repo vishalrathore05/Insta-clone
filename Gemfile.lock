@@ -86,6 +86,8 @@ GEM
     bcrypt (3.1.19)
     bigdecimal (3.1.4)
     bindex (0.8.1)
+    bootsnap (1.17.0)
+      msgpack (~> 1.2)
     bootstrap (5.3.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
@@ -157,6 +159,7 @@ GEM
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.20.0)
+    msgpack (1.7.2)
     mutex_m (0.1.2)
     nested_form (0.3.2)
     net-imap (0.4.2)
@@ -292,6 +295,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bootsnap
   bootstrap
   capybara
   cssbundling-rails
