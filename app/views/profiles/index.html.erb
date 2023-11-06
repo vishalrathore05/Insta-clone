@@ -1,48 +1,57 @@
 <div class="main text-center " style="justify-container: center; padding-top: 10%">
   <div class="card shadow">
-    <h2>Profile</h2>
-    <div class="card-body">
+     <div class="card-body" style="padding-top: 5%; padding-bottom: 5%">
       <i class="fa fa-pen fa-xs edit"></i>
       <table>
         <tbody>
           <div class="col-md-6">
             <% if @profiles.present? && @profiles.image.attached? %>
               <%= image_tag url_for(@profiles.image), class: "dot card-img-top", style: "height: 150px; width: 150px; border-width: 50%; border-radius: 50%;" %>
+            <% else %>
+              <img src="<%= asset_url 'goku.jpg' %>" width="150" class=" dropdown-toggle" style="height: 150px; width: 150px; border-width: 50%; border-radius: 50%;"" href="#" role="button"
+                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <% end %>
           </div>
-          <div class="col-md-6 text-center">
-            <tr>
-              <td>
-                <h4>
-                  <%= @profiles.name %>
-                </h4>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5>
-                  <%= @profiles.bio %>
-                </h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5>Bali, Indonesia</h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5>Diving, Reading Book</h5>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5>PHP, HTML, CSS, Java</h5>
-              </td>
-            </tr>
+          <div class="py-3 col-md-6 text-start">
+            <h3><%= @profiles.name %></h3>
+            <h4><%= @profiles.bio %></h4>
+            <h4>Bali, Indonesia</h4>
+            <h4>Diving, Reading Book</h4>
+            <h4>PHP, HTML, CSS, Java</h4>
           </div>
         </tbody>
       </table>
+    </div>
+  </div>
+  <hr>
+  <h2>My Posts</h2>
+  <div class="container mx-auto" style="padding-top: 10px;">
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-md-3">
+          <div class="card">
+            <div id="<%= dom_id post %>">
+              <% if post.present? && post.image.present? %>
+                <%= image_tag url_for(post.image), class: "card-img-top", style: "height: 150px;" %>
+              <% end %>
+              <div class="card-body">
+                <p>
+                  <strong>Created by:</strong>
+                  <span class="main-tbl-td"><%= post&.user&.email %></span>
+                </p>
+                <h5 class="card-title">
+                  <strong>Title:</strong>
+                  <%= post.title %>
+                </h5>
+                <p class="card-text">
+                  <strong>Description:</strong>
+                  <%= post.description %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

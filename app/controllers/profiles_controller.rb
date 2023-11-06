@@ -6,9 +6,8 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
    def index
-    if current_user.present?
-      @profiles = current_user.profile
-    end
+       @profiles = current_user.profile
+      @posts = current_user.posts.order(created_at: :desc)
   end
 
   # GET /profiles/1 or /profiles/1.json
