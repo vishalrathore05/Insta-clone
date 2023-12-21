@@ -7,17 +7,17 @@
           <div class="col-md-6">
             <% if @profiles.present? && @profiles.image.attached? %>
               <%= image_tag url_for(@profiles.image), class: "dot card-img-top", style: "height: 150px; width: 150px; border-width: 50%; border-radius: 50%;" %>
+              <div class="py-3 col-md-6 text-start">
+                <h3><%= @profiles.name %></h3>
+                <h4><%= @profiles.bio %></h4>
+                <h4>Bali, Indonesia</h4>
+                <h4>Diving, Reading Book</h4>
+                <h4>PHP, HTML, CSS, Java</h4>
             <% else %>
               <img src="<%= asset_url 'goku.jpg' %>" width="150" class=" dropdown-toggle" style="height: 150px; width: 150px; border-width: 50%; border-radius: 50%;"" href="#" role="button"
                 id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <% end %>
           </div>
-          <div class="py-3 col-md-6 text-start">
-            <h3><%= @profiles.name %></h3>
-            <h4><%= @profiles.bio %></h4>
-            <h4>Bali, Indonesia</h4>
-            <h4>Diving, Reading Book</h4>
-            <h4>PHP, HTML, CSS, Java</h4>
           </div>
         </tbody>
       </table>

@@ -23,6 +23,8 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
           <% if user_signed_in? %>
+          <a class="nav-link text-dark p-3" href="/posts">Feed</a>
+
             <a class="nav-link text-dark p-3" href="/profiles">My Profile</a>
 
             <%= button_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, method: :delete, style: "background: none; border: none;", class: "nav-link text-dark p-3" %>
@@ -32,12 +34,8 @@
           <% end %>
         </div>
         <ul class="navbar-nav">
-        <!-- Other navigation links -->
-      
-        <!-- Check if the user is signed in -->
         <% if user_signed_in? %>
           <% if current_user.profile.present? %>
-            <!-- User is signed in and has a profile -->
             <li class="nav-item">
               <%= link_to "Profile", profiles_url, class: "nav-link" %>
             </li>
