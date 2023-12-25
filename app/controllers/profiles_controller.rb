@@ -5,9 +5,13 @@ class ProfilesController < ApplicationController
 
 
   # GET /profiles or /profiles.json
-   def index
-       @profiles = current_user.profile
-      @posts = current_user.posts.order(created_at: :desc)
+   def index 
+    if current_user.present?
+      @profiles = current_user.profile
+     @posts = current_user.posts.order(created_at: :desc)
+    else
+      @profiles = current_user.profile
+    end
   end
 
   # GET /profiles/1 or /profiles/1.json
