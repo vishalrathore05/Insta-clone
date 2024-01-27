@@ -72,6 +72,24 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.find(params[:id])
+    @like = Like.find_or_initialize_by(user: current_user, post: @post)
+
+    if @like.persisted?
+      @like.destroy
+      flash[:notice] = 'Post unliked successfully'
+    else
+      @like.save
+      flash[:notice] = 'Post liked successfully'
+    end
+
+    respond_to do |format|
+      format.html { redirect_to posts_path }
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
