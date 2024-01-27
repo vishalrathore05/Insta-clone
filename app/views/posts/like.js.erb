@@ -1,0 +1,23 @@
+# // app/views/posts/like.js.erb
+# let postId = <%= @post.id %>;
+# let liked = <%= @like.persisted? %>;
+
+# let likeButton = document.getElementById(`like-button-${postId}`);
+# likeButton.dataset.liked = liked;
+
+# let heartIcon = likeButton.querySelector('.fa-heart');
+# heartIcon.classList.toggle('liked', liked);
+// app/views/posts/like.js.erb
+let postId = <%= @post.id %>;
+let liked = <%= @like.persisted? %>;
+
+let likeButton = document.getElementById(`like-button-${postId}`);
+likeButton.dataset.liked = liked;
+
+let heartIcon = likeButton.querySelector('.bi-heart');
+
+if (liked) {
+  heartIcon.classList.add('liked');
+} else {
+  heartIcon.classList.remove('liked');
+}

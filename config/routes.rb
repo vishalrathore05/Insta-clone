@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :profiles
   resources :comments
-  resources :posts
+  # resources :posts
   devise_for :users
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -12,6 +12,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "posts#index"
+  resources :posts do
+    member do
+      post 'like'
+    end
+  end
   # resources :users do
   #   resources :posts do
   #     resources :comments

@@ -5,6 +5,23 @@
       margin-right: auto;
       width: 50%;
     }
+
+    .like-button {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      cursor: pointer;
+      font-size: 24px;
+      transition: color 0.3s ease-in-out;
+    }
+  
+    .like-button.liked {
+      color: red; /* Change this to your preferred liked color */
+    }
+    .card-data{
+      padding-left: 70px;
+    }
+  
 </style>
 <div class="container mx-auto center" style="padding-top: 100px;">
   <div class="row py-4">
@@ -32,7 +49,7 @@
               <% if post.present? && post.image.present? %>
                 <%= image_tag url_for(post.image), class: "card-img-top", style: "height: 400px; " %>
               <% end %>
-              <div class="card-body">
+              <div class="card-body card-data">
                 <h5 class="card-title">
                   <strong>Title:</strong>
                   <%= post.title %>
@@ -42,6 +59,21 @@
                   <%= post.description %>
                   <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %>
                 </p>
+                <% if post.present? && post.liked_by?(current_user) %>
+                  <div class="like-button" id="like-button-<%= post.id %>" data-post-id="<%= post.id %>" data-liked="<%= post.liked_by?(current_user) %>">
+                    <form action="/posts/<%= post.id %>/like" method="post" class="like-form">
+                      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                      <i class="bi-heart liked clickable" style="color: #e32400;" onclick="this.closest('form').submit();"></i>
+                    </form>
+                  </div>
+              <% else %>
+                <div class="like-button" id="like-button-<%= post.id %>" data-post-id="<%= post.id %>" data-liked="<%= post.liked_by?(current_user) %>">
+                  <form action="/posts/<%= post.id %>/like" method="post" class="like-form">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <i class="bi-heart <%= post.liked_by?(current_user) ? 'liked' : 'clickable' %>" onclick="this.closest('form').submit();"></i>
+                  </form>
+                </div>
+              <% end %>
               </div>
             </div>
           </div>
@@ -49,5 +81,4 @@
       <% end %>
     <% end %>
   </div>
-  
 </div>
