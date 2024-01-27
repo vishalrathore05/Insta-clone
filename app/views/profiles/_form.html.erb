@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+<div class = "py-5">
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
@@ -28,5 +32,6 @@
  
   <div>
     <%= form.submit %>
+  </div>
   </div>
 <% end %>

@@ -1,14 +1,53 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+<style>
+  .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+</style>
+<div class="container mx-auto center" style="padding-top: 100px;">
+  <div class="row py-4">
+    <% if @posts.nil? %>
+      <div class="container"> 
+      <a class="nav-link text-dark p-3" href="/posts/new">Create post</a>
+      </div> 
+    <% else %>
+      <% @posts.each do |post| %>
+        <div class="col-md-12 py-4">
+          <div class="card" >
+            <div class="row py-1">
+              <div class="col-md-6">
+                <strong> 
+                    <img src="<%= asset_url 'goku.jpg' %>" width="150" class=" dropdown-toggle" style="height: 40px; width: 40px; border-width: 50%; border-radius: 50%;"" href="#" role="button"
+                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                </strong>
+                <span class="main-tbl-td"><%= post.user.email %></span>
+            </div>
+              <div class="col-md-6 text-end py-1">
+                <span style="padding-right:10px"> <%= post.created_at.strftime("%B %d ") %></span>
+              </div>
+            </div>
+            <div id="<%= dom_id post %>">
+              <% if post.present? && post.image.present? %>
+                <%= image_tag url_for(post.image), class: "card-img-top", style: "height: 400px; " %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title">
+                  <strong>Title:</strong>
+                  <%= post.title %>
+                </h5>
+                <p class="card-text">
+                  <strong>Description:</strong>
+                  <%= post.description %>
+                  <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  
 </div>
-
-<%= link_to "New post", new_post_path %>

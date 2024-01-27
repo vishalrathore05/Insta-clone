@@ -3,11 +3,18 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
-  end
+    if current_user.present?
+      @posts = Post.all
+      @profiles = current_user.profile
+    else
+      @posts = Post.all
+    end
+   end
 
   # GET /posts/1 or /posts/1.json
   def show
+    @posts = Post.all
+
   end
 
   # GET /posts/new

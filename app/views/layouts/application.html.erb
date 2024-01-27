@@ -5,46 +5,37 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
    </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: white; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: grey; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);">
       <div class="container-fluid">
         <a href="/"  >
-          <img src="/assets/SSLogo.png" style="height: 55px; width: 100px;" alt="not load" class="navbar-brand"></img>
+          <img src="/assets/logo.png" style="height: 55px; width: 100px;" alt="not load" class="navbar-brand"></img>
         </a>
         <button class="navbar-toggler bg-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
           <% if user_signed_in? %>
-            <a class="nav-link text-dark p-3" href="/analytics">Analytics</a>
-
+          <a class="nav-link text-dark p-3" href="/posts">Feed</a>
+          <a class="nav-link text-dark p-3" href="/posts/new">Post</a>
+          <% if current_user.profile.present? %>
+          <a class="nav-link text-dark p-3" href="/profiles">My Profile</a>
+          <% else %>
+          <a class="nav-link text-dark p-3" href="/profiles/new ">My Profile</a>
+          <% end %>
             <%= button_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, method: :delete, style: "background: none; border: none;", class: "nav-link text-dark p-3" %>
           <% else %>
             <a class="nav-link text-dark" aria-current="page" href="/users/sign_in">Sign in
             </a>
           <% end %>
-        </div>
-        <ul class="navbar-nav">
-        <!-- Other navigation links -->
-      
-        <!-- Check if the user is signed in -->
-        <% if user_signed_in? %>
-          <% if current_user.profile.present? %>
-            <!-- User is signed in and has a profile -->
-            <li class="nav-item">
-              <%= link_to "Profile", profiles_url, class: "nav-link" %>
-            </li>
-          <% else %>
-            <!-- User is signed in but doesn't have a profile -->
-            <li class="nav-item">
-              <%= link_to "Create Profile", new_profile_url, class: "nav-link" %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
+        </div> 
       
       </div>
     </nav>
