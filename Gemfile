@@ -74,4 +74,5 @@ gem 'rails_admin', '~> 3.1'
 gem "sassc-rails"
 gem 'devise'
 
+gem "importmap-rails"
 gem 'bootstrap'
