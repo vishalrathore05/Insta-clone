@@ -23,16 +23,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
 
-    respond_to do |format|
       if @comment.save
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
-        format.json { render :show, status: :created, location: @comment }
+        redirect_to posts_path, notice: 'Comment was successfully created.'
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
-    end
-  end
+   end
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update

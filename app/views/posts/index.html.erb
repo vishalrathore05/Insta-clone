@@ -74,6 +74,29 @@
                   </form>
                 </div>
               <% end %>
+               <div class="d-flex justify-content-between align-items-center mt-3">
+                <div>
+                  <!-- Comment Icon -->
+                  <i class="bi bi-chat-square clickable" style="font-size: 24px;"></i>
+                  <!-- Comment Count -->
+                  <%= post.comments.count %>
+                </div>
+                <div class="like-button" id="like-button-<%= post.id %>" data-post-id="<%= post.id %>" data-liked="<%= post.liked_by?(current_user) %>">
+                  <!-- Your existing like button form here -->
+                </div>
+                <%= form_with(model: [post, Comment.new], url: post_comments_path(post)) do |form| %>
+                  <%= form.hidden_field :post_id, value: post.id %>
+                  <%= form.hidden_field :user_id, value: current_user.id %>
+                  
+                  <div class="form-group">
+                    <%= form.label :content, "Comment" %>
+                    <%= form.text_area :content, class: "form-control", placeholder: "Enter your comment here" %>
+                  </div>
+
+                  <%= form.submit "Post Comment", class: "btn btn-primary mt-2" %>
+                <% end %>
+
+              </div>
               </div>
             </div>
           </div>
