@@ -84,6 +84,11 @@
                 <div class="like-button" id="like-button-<%= post.id %>" data-post-id="<%= post.id %>" data-liked="<%= post.liked_by?(current_user) %>">
                   <!-- Your existing like button form here -->
                 </div>
+
+              </div>
+              </div>
+            </div>
+          </div>
                 <%= form_with(model: [post, Comment.new], url: post_comments_path(post)) do |form| %>
                   <%= form.hidden_field :post_id, value: post.id %>
                   <%= form.hidden_field :user_id, value: current_user.id %>
@@ -95,11 +100,6 @@
 
                   <%= form.submit "Post Comment", class: "btn btn-primary mt-2" %>
                 <% end %>
-
-              </div>
-              </div>
-            </div>
-          </div>
         </div>
       <% end %>
     <% end %>
